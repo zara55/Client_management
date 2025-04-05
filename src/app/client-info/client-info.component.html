@@ -1,0 +1,100 @@
+<div>
+    <div class="d-flex justify-content-end align-items-center" style="margin: 5px;">
+        <button type="button" class="btn btn-light buttonAlign" mat-flat-button
+            (click)="createNewClient()"> <mat-icon>add</mat-icon> New Client</button>
+    </div> 
+    <div>
+      
+
+    <div class="row m-3">
+        
+        <div class="col">
+            <label><strong>CLIENT DETAIL INFORMATION</strong></label>
+        </div>
+        <div class="d-flex justify-content-end align-items-center">
+            <div class="search-filter">
+                <input type="text" placeholder="Search..." class="search-input" [(ngModel)]="searchQuery" (change)="onHandleSearch()" />
+            </div>
+        </div>
+        <div class="table-responsive bordered-table mt-3">
+            <table class="table table-content modern-table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Company Name</th>
+                  <th>Email Id</th>
+                  <th>Mobile No</th>
+                  <th>Meeting Topic</th>
+                  <!-- <th>People Count</th> -->
+                  <th>Meeting Info</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                @if(clientInfo?.length>0){
+                @for (item of clientInfo; track $index) {
+                  <tr>
+                    <td>
+                      <mat-checkbox [checked]="selectedClientId === item.id" (change)="checkBoxChange($event,item.id)"></mat-checkbox>
+                    </td>
+                    <td>{{ item.firstName }}</td>
+                    <td>{{ item.lastName}}</td>
+                    <td>{{ item.companyName }}</td>
+                    <td>{{ item.email}}</td>
+                    <td>{{ item.mobile}}</td>
+                    <td>{{ item.meetingTopic }}</td>
+                    <!-- <td>{{ item.noofPeoples }}</td> -->
+                    <td>{{ item.scheduleMeeting | date}}</td>
+                    <td class="d-flex">
+                      <button class="action-button edit-button" [disabled]="selectedClientId !== item.id" (click)="editClientItem(item)">
+                        <mat-icon>edit</mat-icon>
+                      </button>
+                      &nbsp;
+                      <button class="action-button delete-button" [disabled]="selectedClientId !== item.id" (click)="deleteClientItem(item)">
+                        <mat-icon>delete</mat-icon>
+                      </button>
+                    </td>
+                  </tr>
+                }
+            }
+            @else {
+                <tr>
+                  <td colspan="10">No Records Found</td>
+                </tr>
+              }
+              </tbody>
+            </table>
+          </div>
+            </div>
+
+
+
+
+    </div>
+</div>
+
+<ng-template #confirmationModal>
+    <h2 mat-dialog-title>Message</h2>
+    <mat-dialog-content>Are You Sure To Edit this Item?</mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-button mat-dialog-close (click)="editProjectInfo()">Yes</button>
+        &nbsp;
+        <button mat-button mat-dialog-close>No</button>
+
+    </mat-dialog-actions>
+
+</ng-template>
+
+<ng-template #DeletingModal>
+    <h2 mat-dialog-title>Message</h2>
+    <mat-dialog-content>Are You Sure You Want To Delete this Item?</mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-button mat-dialog-close (click)="deleteProjectInfo()">Yes</button>
+        &nbsp;
+        <button mat-button mat-dialog-close>No</button>
+
+    </mat-dialog-actions>
+
+</ng-template>

@@ -1,0 +1,149 @@
+<div>
+    <div class="d-flex justify-content-end align-items-center mr-3" style="margin: 5px;">
+        <button type="button" class="btn btn-light buttonAlign" mat-flat-button
+            (click)="createNewProject()"> <mat-icon>add</mat-icon> New Project</button>
+    </div> 
+    <div>
+      
+
+    <div class="row m-3">
+        
+        <div class="col">
+            <label><strong>PROJECT DETAIL INFORMATION</strong></label>
+        </div>
+        <div class="d-flex justify-content-end align-items-center">
+            
+           
+            <div class="filter-container">
+                <!-- Filter Toggle Button -->
+                <button class="btn btn-light buttonAlign" type="button" (click)="toggleFilters()">
+                  Filters <i class="bi bi-filter"></i>
+                </button>
+              
+                <!-- Dropdown Menu for Filters -->
+                <ul *ngIf="isFilterOpen" class="dropdown-menu show" aria-labelledby="filterDropdown">
+                  <!-- Status Filter -->
+                  <li>
+                    <div class="dropdown-item row">
+                        <div class="col">
+                      <label for="statusFilter" style="font-weight: 500">Status:</label>
+                    </div>
+                    <div class="col">
+                      <select id="statusFilter" class="form-select" [(ngModel)]="statusFilter" (change)="onApplyFilters()">
+                        <option value="">All Status</option>
+                        <option value="active">Active</option>
+                        <option value="completed">Completed</option>
+                        <option value="pending">Pending</option>
+                      </select>
+                    </div>
+                    </div>
+                  </li>
+              
+                  <!-- Start Date Filter -->
+                  <li>
+                    <div class="dropdown-item">
+                      <label for="startDateFilter"  style="font-weight: 500">Start Date:</label>
+                      <input type="date" id="startDateFilter" class="form-control" [(ngModel)]="startDateFilter" (change)="onApplyFilters()" />
+                    </div>
+                  </li>
+              
+                  <!-- End Date Filter -->
+                  <li>
+                    <div class="dropdown-item">
+                      <label for="endDateFilter"  style="font-weight: 500">End Date:</label>
+                      <input type="date" id="endDateFilter" class="form-control" [(ngModel)]="endDateFilter" (change)="onApplyFilters()" />
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              &nbsp;&nbsp;
+              <div class="search-filter">
+                <input type="text" placeholder="Search..." class="search-input" [(ngModel)]="searchQuery" (change)="onHandleSearch()" />
+            </div>
+              
+        </div>
+                <div class="table-responsive bordered-table mt-2">
+                    <table class="table table-content modern-table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Project Name</th>
+                                <th>Project Desc</th>
+                                <th>Client Name</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Project Status</th>
+                                <th>Email Id</th>
+                                <th>Phone No</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if(projectInfo?.length>0){
+                            @for (item of projectInfo; track $index) {
+                            <tr>
+                                <td>
+                                    <mat-checkbox [checked]="selectedId === item.id"
+                                        (change)="checkBox($event,item.id)"></mat-checkbox>
+                                </td>
+                                <td>{{ item.projectName }}</td>
+                                <td>{{ item.projectDesc}}</td>
+                                <td>{{ item.clientName }}</td>
+                                <td>{{ item.startDate }}</td>
+                                <td>{{ item.endDate }}</td>
+                                <td>{{ item.projectStatus }}</td>
+                                <td>{{ item.emailId }}</td>
+                                <td>{{ item.mobileNo }}</td>
+                                <td class="d-flex">
+                                    <button class="action-button edit-button" [disabled]="selectedId !== item.id"
+                                        (click)="editItem(item)">
+                                        <mat-icon>edit</mat-icon>
+                                    </button>
+                                    &nbsp;
+                                    <button class="action-button delete-button" [disabled]="selectedId !== item.id"
+                                        (click)="deleteItem(item)">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+                                </td>
+                            </tr>
+                             }
+                            }
+                            @else {
+                                <tr>
+                                  <td colspan="10">No Records Found</td>
+                                </tr>
+                              }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+
+
+    </div>
+</div>
+
+<ng-template #confirmationModal>
+    <h2 mat-dialog-title>Message</h2>
+    <mat-dialog-content>Are You Sure To Edit this Item?</mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-button mat-dialog-close (click)="editProjectInfo()">Yes</button>
+        &nbsp;
+        <button mat-button mat-dialog-close>No</button>
+
+    </mat-dialog-actions>
+
+</ng-template>
+
+<ng-template #DeletingModal>
+    <h2 mat-dialog-title>Message</h2>
+    <mat-dialog-content>Are You Sure You Want To Delete this Item?</mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-button mat-dialog-close (click)="deleteProjectInfo()">Yes</button>
+        &nbsp;
+        <button mat-button mat-dialog-close>No</button>
+
+    </mat-dialog-actions>
+
+</ng-template>

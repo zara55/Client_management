@@ -1,0 +1,41 @@
+<!-- Static Navbar (Tabs) -->
+<div style="background-color: #0747a6; color: #f0f0f0; position: sticky; top: 0; z-index: 100;">
+  <div class="row container" style="height: 50px;">
+    <div class="col-3 mt-3" style="font-weight: 700;margin-left: 10px;">
+    <label>CLIENT MANAGEMENT SYSTEM</label>
+  </div>
+    <div class="col-8 d-flex justify-content-center align-items-center">
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link" 
+             [class.active]="activeTab === 'projectInfo'" 
+             (click)="setActiveTab('projectInfo')" 
+             style="color: #f0f0f0;">PROJECT</a>
+        </li>
+        <li class="nav-item separator">
+          <span>|</span>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" 
+             [class.active]="activeTab === 'clientInfo'" 
+             (click)="setActiveTab('clientInfo')" 
+             style="color: #f0f0f0;">CLIENT</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Dynamic Content Based on Active Tab -->
+<div class="content mt-3">
+  <div *ngIf="activeTab === 'projectInfo'">
+   <app-project-details></app-project-details>
+  </div>
+  <div *ngIf="activeTab === 'clientInfo'">
+    <app-client-info></app-client-info>
+  </div>
+</div>
+
+
+
+

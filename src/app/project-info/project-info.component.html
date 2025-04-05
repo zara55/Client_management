@@ -1,0 +1,236 @@
+<div>
+<div class="row align-items-center justify-content-between header-container"  style="background-color: #0747a6; max-width: 100%; box-sizing: border-box;margin: 0px;padding: 0px;height: 50px;">
+   <div class="col-auto">
+    <mat-icon (click)="goBack()" style="color: #f0f0f0;">arrow_back</mat-icon>
+    </div>
+    <div class="col text-center">
+    <label style="color: white;font-size: 22px; font-weight: 600;">PROJECT DETAILS</label>
+   </div>
+</div>
+<div class="scrollable-container" style="background-color: #f0f0f0;">
+<div class="container">
+    <form [formGroup]="ProjectInfo">
+        <div class="mt-3 justify-content-center align-items-center">
+      
+          <!-- Project Name Field -->
+          <div class="row">
+            <div class="col-md-7">
+              <div class="align-items-center d-flex">
+                <div class="col-3">
+                  <label class="form-label" style="font-weight: 500;">Project Name:</label>
+                </div>
+                <div class="col">
+                  <input type="text" placeholder="Enter the text" class="form-control" formControlName="projectName">
+                </div>
+              </div>
+            </div>
+            <div style="margin-left: 15%;" class="col-12 mt-2" *ngIf="ProjectInfo.get('projectName')?.invalid && ProjectInfo.get('projectName')?.touched">
+                <div class="text-danger">
+                <ng-container *ngIf="ProjectInfo.get('projectName')?.errors?.['required']">
+                  Please enter a Project Name.
+                </ng-container>
+                </div>
+            </div>
+          </div>
+      
+          <!-- Client Name Field -->
+          <div class="row mt-2">
+            <div class="col-md-7">
+              <div class="align-items-center d-flex">
+                <div class="col-3">
+                  <label class="form-label" style="font-weight: 500;">Client Name:</label>
+                </div>
+                <div class="col">
+                  <input type="text" placeholder="Enter the text" class="form-control" formControlName="clientName">
+                </div>
+              </div>
+            </div>
+            <div  style="margin-left: 15%;" class="col-12 mt-2"  *ngIf="ProjectInfo.get('clientName')?.invalid && ProjectInfo.get('clientName')?.touched">
+                <div class="text-danger">
+                <ng-container *ngIf="ProjectInfo.get('clientName')?.errors?.['required']">
+                  Please enter a Client Name.
+                </ng-container>
+            </div>
+                </div>
+          </div>
+      
+          <!-- Project Description Field -->
+          <div class="row mt-2">
+            <div class="col-md-7">
+              <div class="align-items-center d-flex">
+                <div class="col-3">
+                  <label class="form-label" style="font-weight: 500;">Project Description:</label>
+                </div>
+                <div class="col d-flex">
+                  <textarea placeholder="Description..." class="form-control" formControlName="projectDesc"></textarea>
+                </div>
+              </div>
+            </div>
+            <div style="margin-left: 15%;" class="col-12 mt-2"  *ngIf="ProjectInfo.get('projectDesc')?.invalid && ProjectInfo.get('projectDesc')?.touched" >
+                
+                <div class="text-danger">
+                    <ng-container *ngIf="ProjectInfo.get('projectDesc')?.errors?.['required']">
+                  Please provide a Project Description.
+                </ng-container>
+                <ng-container *ngIf="ProjectInfo.get('projectDesc')?.errors?.['minlength']">
+                  Project Description must be at least {{ProjectInfo.get('projectDesc')?.errors?.['minlength'].requiredLength}} characters long.
+                </ng-container>
+                <ng-container *ngIf="ProjectInfo.get('projectDesc')?.errors?.['maxlength']">
+                  Project Description must be at most {{ProjectInfo.get('projectDesc')?.errors?.['maxlength'].requiredLength}} characters long.
+                </ng-container>
+                </div>
+              </div>
+          </div>
+      
+          <!-- Project Status Field -->
+          <div class="row mt-2">
+            <div class="col-md-7">
+              <div class="align-items-center d-flex">
+                <div class="col-3">
+                  <label class="form-label" style="font-weight: 500;">Project Status:</label>
+                </div>
+                <div class="col d-flex">
+                  <select class="form-control" formControlName="projectStatus">
+                    <option value="">Select</option>
+                    <option value="Active">Active</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Pending">Pending</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div style="margin-left: 15%;" class="col-12 mt-2" *ngIf="ProjectInfo.get('projectStatus')?.invalid && ProjectInfo.get('projectStatus')?.touched">
+                <div class="text-danger">
+                <ng-container *ngIf="ProjectInfo.get('projectStatus')?.errors?.['required']">
+                Please select a Project Status.
+                </ng-container>
+                </div>
+                </div>
+          </div>
+      
+          <!-- Start Date Field -->
+          <div class="row mt-2">
+            <div class="col-md-7">
+              <div class="align-items-center d-flex">
+                <div class="col-3">
+                  <label class="form-label" style="font-weight: 500;">Start Date:</label>
+                </div>
+                <div class="col d-flex">
+                  <input matInput [matDatepicker]="picker1" class="form-control" formControlName="startDate" (dateChange)="onDateChange($event)">
+                  <mat-datepicker-toggle matSuffix [for]="picker1" style="margin-left: -45px;"></mat-datepicker-toggle>
+                  <mat-datepicker #picker1></mat-datepicker>
+                </div>
+              </div>
+            </div>
+            <div style="margin-left: 15%;" class="col-12 mt-2" *ngIf="ProjectInfo.get('startDate')?.invalid && ProjectInfo.get('startDate')?.touched">
+                <div class="text-danger">
+                <ng-container *ngIf="ProjectInfo.get('startDate')?.errors?.['required']">
+                  Start Date is Required
+                </ng-container>
+                <ng-container *ngIf="ProjectInfo.get('startDate')?.errors?.['matDatepickerParse']">
+                  Invalid Date Format
+                </ng-container>
+              </div>
+              </div>
+          </div>
+      
+          <!-- End Date Field -->
+          <div class="row mt-2">
+            <div class="col-md-7">
+              <div class="align-items-center d-flex">
+                <div class="col-3">
+                  <label class="form-label" style="font-weight: 500;">End Date:</label>
+                </div>
+                <div class="col d-flex">
+                  <input matInput [matDatepicker]="picker2" class="form-control" formControlName="endDate" (dateChange)="onDateChange1($event)">
+                  <mat-datepicker-toggle matSuffix [for]="picker2" style="margin-left: -45px;"></mat-datepicker-toggle>
+                  <mat-datepicker #picker2></mat-datepicker>
+                </div>
+              </div>
+            </div>
+            <div style="margin-left: 15%;" class="col-12 mt-2" *ngIf="ProjectInfo.get('endDate')?.invalid && ProjectInfo.get('endDate')?.touched">
+                <div class="text-danger">
+                <ng-container *ngIf="ProjectInfo.get('endDate')?.errors?.['required']">
+                  End Date is Required
+                </ng-container>
+                <ng-container *ngIf="ProjectInfo.get('endDate')?.errors?.['matDatepickerParse']">
+                  Invalid Date Format
+                </ng-container>
+              </div>
+              </div>
+          </div>
+      
+          <!-- Mobile Number Field -->
+          <div class="row mt-2">
+            <div class="col-md-7">
+              <div class="align-items-center d-flex">
+                <div class="col-3">
+                  <label class="form-label" style="font-weight: 500;">Mobile No:</label>
+                </div>
+                <div class="col d-flex">
+                  <input type="tel" pattern="[0-9]{10}" maxlength="10" class="form-control" formControlName="mobileNo">
+                </div>
+              </div>
+            </div>
+            <div class="col-12 mt-2" *ngIf="ProjectInfo.get('mobileNo')?.invalid && ProjectInfo.get('mobileNo')?.touched" style="margin-left: 15%;">
+                <div class="text-danger">
+                  <ng-container *ngIf="ProjectInfo.get('mobileNo')?.errors?.['required']">
+                    Mobile Number is Required
+                </ng-container>
+                  <ng-container *ngIf="ProjectInfo.get('mobileNo')?.errors?.['pattern']">
+                    Invalid Mobile Number Format
+                </ng-container>
+                </div>
+              </div>
+          </div>
+      
+          <!-- Email Id Field -->
+          <div class="row mt-2">
+            <div class="col-md-7">
+              <div class="align-items-center d-flex">
+                <div class="col-3">
+                  <label class="form-label" style="font-weight: 500;">Email-Id:</label>
+                </div>
+                <div class="col d-flex">
+                  <input type="email" class="form-control" formControlName="emailId">
+                </div>
+              </div>
+            </div>
+            <div class="col-12 mt-2" *ngIf="ProjectInfo.get('emailId')?.invalid && ProjectInfo.get('emailId')?.touched" style="margin-left: 15%;">
+                <div class="text-danger">
+                  <ng-container *ngIf="ProjectInfo.get('emailId')?.errors?.['required']">
+                    Email Id is Required
+                  </ng-container>
+                  <ng-container *ngIf="ProjectInfo.get('emailId')?.errors?.['pattern']">
+                    Invalid Email Format
+                  </ng-container>
+                </div>
+              </div>
+
+          </div>
+      
+          <!-- Submit Button -->
+          <div class="row mt-4 mb-5">
+            <div class="col-md-7">
+              <div class="align-items-center d-flex">
+                <button type="button" class="btn-primary" style="border-radius: 6px;width: 100px;background-color: #0747a6;border-color: 0747a6;" (click)="submitForm()" [ngStyle]="ProjectInfo.invalid ? {'backgroundColor': 'grey' , 'border-color': 'grey'} : {'backgroundColor':'#0747a6'}" [disabled]="ProjectInfo.invalid">
+                  Submit
+                </button>
+                &nbsp;
+                <button *ngIf="!showData"
+                type="button" 
+                class="btn-primary" 
+                style="border-radius: 6px;width: 100px;background-color: #0747a6;border-color: #0747a6;" 
+                (click)="resetForm()">
+                Cancel
+              </button>
+              </div>
+            </div>
+          </div>
+      
+        </div>
+      </form>
+      
+</div>
+</div>
+</div>

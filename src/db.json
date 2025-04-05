@@ -1,0 +1,94 @@
+{
+  "projectInfo": [
+    {
+      "id": "1",
+      "projectName": "Apple Park",
+      "projectDesc": "A massive corporate campus designed to be a Spaceship",
+      "clientName": "Apple Inc",
+      "projectStatus": "Completed",
+      "startDate": "2025-03-27",
+      "endDate": "2026-03-30",
+      "emailId": "apple123@apple.co.in",
+      "mobileNo": "5551234567"
+    },
+    {
+      "id": 2,
+      "projectName": "Heydar Aliyev Center ",
+      "projectDesc": "To serves as a cultural hub for the region",
+      "clientName": " Zaha Hadid Architects",
+      "projectStatus": "Active",
+      "startDate": "2025-04-02",
+      "endDate": "2026-07-16",
+      "emailId": "zaha@mail.com",
+      "mobileNo": "5551234568"
+    },
+    {
+      "id": 3,
+      "projectName": "The Skygarden ",
+      "projectDesc": "An mixed-use building that features apartments, offices, and public space, the Skygarden project by MVRDV is known for its modern design.",
+      "clientName": "Reggeborgh",
+      "projectStatus": "Pending",
+      "startDate": "2025-03-27",
+      "endDate": "2026-03-30",
+      "emailId": "borgh@gmail.com",
+      "mobileNo": "5551234569"
+    },
+    {
+      "id": 4,
+      "projectName": "tre",
+      "projectDesc": "ytretretrtre",
+      "clientName": "tretrewre",
+      "projectStatus": "Active",
+      "startDate": "2025-04-17",
+      "endDate": "2025-04-30",
+      "emailId": "sd@mail.com",
+      "mobileNo": "9876543212"
+    }
+  ],
+  "clientInfo": [
+    {
+      "firstName": "James",
+      "lastName": "Park",
+      "companyName": "Foster and Partners",
+      "address": "Apple Park, 1 Infinite Loop, Cupertino, CA 95014, USA",
+      "meetingTopic": "Designing and Planning for activites",
+      "email": "park001@gmail.com",
+      "mobile": "5551234570",
+      "scheduleMeeting": "2025-04-02T00:56",
+      "id": "1"
+    },
+    {
+      "id": "2",
+      "firstName": "Ethan",
+      "lastName": "Bennk",
+      "companyName": "Zaha Hadid Architects",
+      "address": "Heydar Aliyev Center, 1 Heydar Aliyev Avenue, Baku, Azerbaijan",
+      "meetingTopic": "Planning and Delivering",
+      "email": "zaha@mail.com",
+      "mobile": "5551234571",
+      "scheduleMeeting": "2025-04-05T01:32"
+    },
+    {
+      "id": "3",
+      "firstName": "Olivia",
+      "lastName": "Catter",
+      "companyName": "David Chipperfield Architects",
+      "address": "Reggeborgh, P.O. Box 300, 8901 JH Leeuwarden, Netherlands",
+      "meetingTopic": "Designing and Discussing",
+      "email": "arDavid@gmail.com",
+      "mobile": "5551234572",
+      "scheduleMeeting": "2025-05-09T01:38"
+    },
+    {
+      "id": 4,
+      "firstName": "Noah",
+      "lastName": "Wilson",
+      "companyName": "Herzog & de Meuron",
+      "address": "2 Tai Seng Avenue, Ground Floor, Suite A-1, Singapore 534408 Singapore Singapore 534408\n-",
+      "meetingTopic": "Planning and Designing",
+      "email": "arnoah005q@gmail.com",
+      "mobile": "5551234573",
+      "scheduleMeeting": "2025-04-19T00:49"
+    }
+  ]
+}

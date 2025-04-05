@@ -1,0 +1,15 @@
+.header-container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #0747a6;
+    z-index: 100;
+    padding: 10px; /* Or whatever padding you need */
+    box-sizing: border-box;
+  }
+  
+  .scrollable-container {
+    overflow-y: auto;
+    height: calc(100vh - 50px); /* Adjust 50px to your header height */
+    margin-top: 50px; /* Adjust to your header height */
+  }
