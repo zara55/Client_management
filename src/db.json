@@ -32,17 +32,6 @@
       "endDate": "2026-03-30",
       "emailId": "borgh@gmail.com",
       "mobileNo": "5551234569"
-    },
-    {
-      "id": 4,
-      "projectName": "tre",
-      "projectDesc": "ytretretrtre",
-      "clientName": "tretrewre",
-      "projectStatus": "Active",
-      "startDate": "2025-04-17",
-      "endDate": "2025-04-30",
-      "emailId": "sd@mail.com",
-      "mobileNo": "9876543212"
     }
   ],
   "clientInfo": [

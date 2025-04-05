@@ -121,7 +121,7 @@ export class ProjectDetailsComponent {
   }
   onApplyFilters() {
     this.projectInfo = this.responseData.filter((project: any) => {
-      const matchesStatus = this.statusFilter ? project.projectStatus === this.statusFilter : true;
+      const matchesStatus = this.statusFilter ? project.projectStatus.toLowerCase() === this.statusFilter.toLowerCase() : true;
       const matchesStartDate = this.startDateFilter ? new Date(project.startDate) >= new Date(this.startDateFilter) : true;
       const matchesEndDate = this.endDateFilter ? new Date(project.startDate) <= new Date(this.endDateFilter) : true;
 
